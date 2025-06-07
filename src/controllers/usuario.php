@@ -126,6 +126,17 @@ function usuario_eliminar() {
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $id = $_POST['id'];
+        $usuarioActual = $_SESSION['usuario']; // Obtener el usuario actual de la sesión
+
+        // Verificar si el usuario que se intenta eliminar es el mismo que tiene la sesión activa
+        $usuarioAEliminar = Usuario::obtenerPorId($id);
+        
+        if ($usuarioAEliminar && $usuarioAEliminar['username'] === $usuarioActual) {
+            $_SESSION['mensaje'] = 'No puedes eliminar tu propia cuenta mientras estás logueado.';
+            $_SESSION['tipo_mensaje'] = 'error';
+            header('Location: index.php?c=usuario');
+            exit();
+        }
 
         $usuario = new Usuario();
         $resultado = $usuario->eliminar($id);
@@ -142,7 +153,6 @@ function usuario_eliminar() {
         exit();
     }
 }
-
 function obtenerTodosUsuarios() {
     $pdo = Conexion::getConexion();
     $stmt = $pdo->prepare("SELECT id, documento, username, nombres, apellidos, telefono, email, sucursal, cargo, fecha_registro FROM usuarios ORDER BY fecha_registro DESC");

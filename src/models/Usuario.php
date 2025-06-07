@@ -97,17 +97,29 @@ class Usuario extends Persona implements IUsuarioModel {
         }
     }
 
-    public function eliminar($id) {
-        $pdo = Conexion::getConexion();
-
-        try {
-            $stmt = $pdo->prepare("DELETE FROM usuarios WHERE id = ?");
-            return $stmt->execute([$id]);
-        } catch (PDOException $e) {
-            error_log("Error al eliminar usuario: " . $e->getMessage());
-            return false;
+   // En la clase Usuario
+public function eliminar($id, $currentUsername = null) {
+    $pdo = Conexion::getConexion();
+    
+    // Si se proporciona el nombre de usuario actual, verificar
+    if ($currentUsername !== null) {
+        $stmt = $pdo->prepare("SELECT username FROM usuarios WHERE id = ?");
+        $stmt->execute([$id]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        if ($user && $user['username'] === $currentUsername) {
+            return false; // No permitir eliminarse a sí mismo
         }
     }
+
+    try {
+        $stmt = $pdo->prepare("DELETE FROM usuarios WHERE id = ?");
+        return $stmt->execute([$id]);
+    } catch (PDOException $e) {
+        error_log("Error al eliminar usuario: " . $e->getMessage());
+        return false;
+    }
+}
 
     public static function obtenerTodos() {
         $pdo = Conexion::getConexion();

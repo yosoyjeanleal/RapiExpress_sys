@@ -1,6 +1,6 @@
 <?php
+require_once __DIR__ . '/../models/Cliente.php';
 
-use RapiExpress\models\Cliente;
 
 session_start();
 

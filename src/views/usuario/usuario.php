@@ -71,54 +71,54 @@
         </div>
     </div>
     <div class="pb-30">
-        <table class="data-table table stripe hover nowrap" id="usuariosTable">
-            <thead>
-                <tr>
-                    <th>Documento</th>
-                    <th>Usuario</th>
-                    <th>Nombre Completo</th>
-                    <th>Email</th>
-                    <th>Teléfono</th>
-                    <th>Sucursal</th>
-                    <th>Cargo</th>
-                    <th class="datatable-nosort">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($usuarios as $usuario): ?>
-                <tr>
-                    <td><?= htmlspecialchars($usuario['documento']) ?></td>
-                    <td><?= isset($usuario['username']) ? htmlspecialchars($usuario['username']) : ''; ?>
-</td>
-                    <td><?= htmlspecialchars($usuario['nombres'] . ' ' . $usuario['apellidos']) ?></td>
-                    <td><?= htmlspecialchars($usuario['email']) ?></td>
-                    <td><?= htmlspecialchars($usuario['telefono']) ?></td>
-                    <td><?= htmlspecialchars($usuario['sucursal']) ?></td>
-                    <td><?= htmlspecialchars($usuario['cargo']) ?></td>
-                    <td>
-                        <div class="dropdown">
-                            <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                                <i class="dw dw-more"></i>
+    <table class="data-table table stripe hover nowrap" id="usuariosTable">
+        <thead>
+            <tr>
+                <th>Documento</th>
+                <th>Usuario</th>
+                <th>Nombre Completo</th>
+                <th>Email</th>
+                <th>Teléfono</th>
+                <th>Sucursal</th>
+                <th>Cargo</th>
+                <th class="datatable-nosort">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($usuarios as $usuario): ?>
+            <tr>
+                <td><?= htmlspecialchars($usuario['documento']) ?></td>
+                <td><?= isset($usuario['username']) ? htmlspecialchars($usuario['username']) : ''; ?></td>
+                <td><?= htmlspecialchars($usuario['nombres'] . ' ' . $usuario['apellidos']) ?></td>
+                <td><?= htmlspecialchars($usuario['email']) ?></td>
+                <td><?= htmlspecialchars($usuario['telefono']) ?></td>
+                <td><?= htmlspecialchars($usuario['sucursal']) ?></td>
+                <td><?= htmlspecialchars($usuario['cargo']) ?></td>
+                <td>
+                    <div class="dropdown">
+                        <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                            <i class="dw dw-more"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#view-usuario-modal-<?= $usuario['id'] ?>">
+                                <i class="dw dw-eye"></i> Ver Detalles
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#view-usuario-modal-<?= $usuario['id'] ?>">
-                                    <i class="dw dw-eye"></i> Ver Detalles
-                                </a>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit-usuario-modal-<?= $usuario['id'] ?>">
-                                    <i class="dw dw-edit2"></i> Editar
-                                </a>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete-usuario-modal" 
-                                   onclick="document.getElementById('delete_usuario_id').value = <?= $usuario['id'] ?>">
-                                    <i class="dw dw-delete-3"></i> Eliminar
-                                </a>
-                            </div>
+                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit-usuario-modal-<?= $usuario['id'] ?>">
+                                <i class="dw dw-edit2"></i> Editar
+                            </a>
+                            <?php if ($usuario['username'] !== $_SESSION['usuario']): ?>
+                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete-usuario-modal" 
+                               onclick="document.getElementById('delete_usuario_id').value = <?= $usuario['id'] ?>">
+                                <i class="dw dw-delete-3"></i> Eliminar
+                            </a>
+                            <?php endif; ?>
                         </div>
-                    </td>
-                </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-    </div>
+                    </div>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
 </div>
 
 <!-- Modal para agregar usuario -->
