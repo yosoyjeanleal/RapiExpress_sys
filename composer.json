@@ -22,7 +22,9 @@
         "src/controllers/dashboard.php",
         "src/controllers/tienda.php",
         "src/controllers/usuario.php",
-        "src/controllers/paquete.php"
+        "src/controllers/paquete.php",
+        "src/controllers/cliente.php",
+        "src/controllers/courier.php"
         
     ]
         

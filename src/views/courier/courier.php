@@ -84,11 +84,18 @@
                             <td><?= htmlspecialchars($courier['codigo']) ?></td>
                             <td><?= htmlspecialchars($courier['nombre']) ?></td>
                             <td><?= htmlspecialchars($courier['direccion']) ?></td>
-                           <td>
-                        <span class="badge badge-<?= $courier['tipo'] == 'activo' ? 'success' : 'danger' ?>">
-                            <?= ucfirst($courier['tipo']) ?>
-                        </span>
-                    </td>
+                               <td>
+    <?php 
+    $badgeClass = 'secondary'; // Por defecto
+    switch(strtolower($courier['tipo'])) {
+        case 'propio': $badgeClass = 'success'; break;
+        case 'asociado': $badgeClass = 'danger'; break;
+    }
+    ?>
+    <span class="badge badge-<?= $badgeClass ?>">
+        <?= ucfirst($courier['tipo']) ?>
+    </span>
+</td>
                             
                             <td>
                                 <div class="dropdown">

@@ -8,10 +8,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
     
     <!-- CSS -->
+     <link rel="stylesheet" href="assets/css/password-validation.css" />
     <link rel="stylesheet" href="vendor/twbs/bootstrap/css/core.css" />
     <link rel="stylesheet" href="vendor/twbs/bootstrap/css/icon-font.min.css" />
-    <link rel="stylesheet" href="vendor/twbs/bootstrap/css/style.css" />
-    <link rel="stylesheet" href="assets/css/password-validation.css" />
+    <link rel="stylesheet" href="vendor/twbs/bootstrap/css/style.css" />   
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="login-page">
@@ -85,11 +85,11 @@
     </div>
 
     <!-- JS -->
-        <script src="assets/js/password_view.js"></script>
+    <script src="assets/js/password-validation.js"></script>
+    <script src="assets/js/password_view.js"></script>
     <script src="vendor/twbs/bootstrap/js/core.js"></script>
     <script src="vendor/twbs/bootstrap/js/script.min.js"></script>
     <script src="vendor/twbs/bootstrap/js/layout-settings.js"></script>
     <script src="assets/js/script.js"></script>
-    <script src="assets/js/password-validation.js"></script>
 </body>
 </html>

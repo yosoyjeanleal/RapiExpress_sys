@@ -207,7 +207,7 @@
 
 
     <!-- JavaScript -->
-     <script src="assets/js/password-validation.js"></script>
+    <script src="assets/js/password-validation.js"></script>
     <script src="assets/js/password_view.js"></script>
     <script src="vendor/twbs/bootstrap/js/core.js"></script>
     <script src="vendor/twbs/bootstrap/js/script.min.js"></script>
